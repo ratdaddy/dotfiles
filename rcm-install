@@ -3,3 +3,16 @@
 this_dir = File.dirname(__FILE__)
 
 `rcup -d #{this_dir} -x '#{this_dir}:README.md #{this_dir}:rcm-install'`
+
+bashrc_name = File.expand_path '~/.bashrc'
+
+unless File.read(bashrc_name) =~ /\.bashrc\.extend/
+  File.open(bashrc_name, "a+") do |f|
+    f.write <<EOF
+
+if [ -f ~/.bashrc.extend ]; then
+  . ~/.bashrc.extend
+fi
+EOF
+  end
+end
