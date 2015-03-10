@@ -27,3 +27,4 @@ set winheight=999
 " Set filetypes
 au BufRead *.hbs setf html
 au BufRead *.jbuilder setf ruby
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
