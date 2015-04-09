@@ -7,3 +7,6 @@ export PATH="./bin:$PATH"
 
 # For Go Lang
 export PATH="$PATH:/usr/local/go/bin"
+
+# For Java
+export JAVA_HOME="/usr/lib/jvm/default-java"
