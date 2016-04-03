@@ -28,6 +28,7 @@ set winheight=999
 au BufRead *.hbs setf html
 au BufRead *.jbuilder setf ruby
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+au BufRead *.edn set filetype=clojure
 
 " Turn on vim-airline
 set laststatus=2
