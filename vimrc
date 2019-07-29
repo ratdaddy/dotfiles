@@ -8,6 +8,8 @@ set expandtab
 map <C-j> :tabnext<CR>
 map <C-k> :tabprev<CR>
 
+runtime macros/matchit.vim
+
 let mapleader=","
 
 " open up file in directory of current file

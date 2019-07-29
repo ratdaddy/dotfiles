@@ -1,12 +1,30 @@
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[33m\]$(__git_ps1)\[\033[0m\]\$ '
 
-export EDITOR="/usr/bin/vim"
+if [ $(uname -s) == "Darwin" ]; then
+  export EDITOR="/usr/local/bin/vim"
+else
+  export EDITOR="/usr/bin/vim"
+fi
 
 # For Spring and possibly other things that use a local bin file
-export PATH="./bin:$PATH"
+export PATH="./bin:$PATH:$HOME/bin"
+
 
 # For Go Lang
-export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
 
 # For Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
+
+# For ESP32
+export PATH=$HOME/esp/xtensa-esp32-elf/bin:$PATH
+export IDF_PATH=$HOME/esp/esp-idf
+
+# For QT webkit
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+if [ -f ~/.bashrc.local ]; then
+  . ~/.bashrc.local
+fi
