@@ -16,7 +16,7 @@ export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 
 # For Java
-export JAVA_HOME="/usr/lib/jvm/default-java"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
 
 # For ESP32
 export PATH=$HOME/esp/xtensa-esp32-elf/bin:$PATH

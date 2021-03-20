@@ -34,3 +34,16 @@ au BufRead *.edn set filetype=clojure
 
 " Turn on vim-airline
 set laststatus=2
+
+" Turn off paren match highlighting
+set noshowmatch
+function! g:DisableMatchParen ()
+    if exists(":NoMatchParen")
+        :NoMatchParen
+    endif
+endfunction
+
+augroup plugin_initialize
+    autocmd!
+    autocmd VimEnter * call DisableMatchParen()
+augroup END
