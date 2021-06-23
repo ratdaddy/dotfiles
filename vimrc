@@ -46,4 +46,5 @@ endfunction
 augroup plugin_initialize
     autocmd!
     autocmd VimEnter * call DisableMatchParen()
+    autocmd BufRead,BufNewFile *.svelte set filetype=html
 augroup END
