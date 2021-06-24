@@ -4,15 +4,21 @@ this_dir = File.dirname(__FILE__)
 
 system "rcup -d #{this_dir} -x '#{this_dir}:README.md #{this_dir}:rcm-install'"
 
-bashrc_name = File.expand_path '~/.bashrc'
+rc_name = case ENV['SHELL']
+  when '/bin/zsh'
+    File.expand_path('~/.zshrc')
+  when '/bin/bash'
+    File.expand_path('~/.bashrc')
+  else
+    File.expand_path('~/.bashrc')
+  end
 
-unless File.read(bashrc_name) =~ /\.bashrc\.extend/
-  File.open(bashrc_name, "a+") do |f|
-    f.write <<EOF
-
-if [ -f ~/.bashrc.extend ]; then
-  . ~/.bashrc.extend
-fi
-EOF
+if !File.exist?(rc_name) || !(File.read(rc_name) =~ /\.shrc\.extend/)
+  File.open(rc_name, "a+") do |f|
+    f.write <<~EOF
+      if [ -f ~/.shrc.extend ]; then
+        . ~/.shrc.extend
+      fi
+    EOF
   end
 end
