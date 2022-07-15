@@ -26,6 +26,8 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
+set regexpengine=2
+
 " Set filetypes
 au BufRead *.hbs setf html
 au BufRead *.jbuilder setf ruby
@@ -48,3 +50,6 @@ augroup plugin_initialize
     autocmd VimEnter * call DisableMatchParen()
     autocmd BufRead,BufNewFile *.svelte set filetype=html
 augroup END
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
