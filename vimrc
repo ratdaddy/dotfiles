@@ -67,10 +67,13 @@ Plug 'junegunn/fzf'
 Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'posva/vim-vue'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-  \ 'coc-tsserver'
+  \ 'coc-tsserver',
+  \ 'coc-solargraph'
   \ ]
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
