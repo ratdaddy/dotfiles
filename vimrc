@@ -1,5 +1,6 @@
 call pathogen#infect()
 syntax enable
+" set background=dark
 filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
@@ -54,6 +55,9 @@ augroup END
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
+highlight Pmenu ctermbg=247
+highlight CocErrorFloat ctermfg=160
+
 " Do :PlugInstall to install any new plugins or for first time setup
 call plug#begin()
 
@@ -73,7 +77,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
-  \ 'coc-solargraph'
+  \ 'coc-solargraph',
+  \ 'coc-rust-analyzer',
   \ ]
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
