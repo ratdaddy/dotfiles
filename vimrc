@@ -55,8 +55,10 @@ augroup END
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-highlight Pmenu ctermbg=247
+highlight Pmenu ctermbg=242
 highlight CocErrorFloat ctermfg=160
+" highlight CocHintLine ctermbg=237
+" highlight CocErrorLine ctermbg=237
 
 " Do :PlugInstall to install any new plugins or for first time setup
 call plug#begin()
