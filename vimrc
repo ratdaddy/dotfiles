@@ -1,6 +1,6 @@
 call pathogen#infect()
 syntax enable
-" set background=dark
+set background=dark
 filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
@@ -55,10 +55,9 @@ augroup END
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-highlight Pmenu ctermbg=242
-highlight CocErrorFloat ctermfg=160
-" highlight CocHintLine ctermbg=237
-" highlight CocErrorLine ctermbg=237
+hi CocPumSearch ctermfg=39
+hi CocErrorFloat ctermfg=203
+hi CocHintFloat ctermfg=14
 
 " Do :PlugInstall to install any new plugins or for first time setup
 call plug#begin()
@@ -81,10 +80,17 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-solargraph',
   \ 'coc-rust-analyzer',
+  \ 'coc-pyright',
   \ ]
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#insert() : "\<CR>"
+inoremap <expr> <tab> coc#pum#visible() ? coc#_select_confirm() : "\<TAB>"
+
+Plug 'github/copilot.vim'
 
 call plug#end()

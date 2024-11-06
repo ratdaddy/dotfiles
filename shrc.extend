@@ -1,9 +1,15 @@
 if [[ $(uname -s) == "Darwin" ]]; then
+  function conda_prompt_info() {
+      if [[ -n "$CONDA_PREFIX" && "$CONDA_DEFAULT_ENV" != "base" ]]; then
+          echo "(conda: ${CONDA_DEFAULT_ENV}) "
+      fi
+  }
+
   autoload -Uz vcs_info
   precmd_vcs_info() { vcs_info; }
   precmd_functions+=( precmd_vcs_info )
   setopt prompt_subst
-  PROMPT='%F{39}%~:%f'\$vcs_info_msg_0_'%# '
+  PROMPT='$(conda_prompt_info)%F{39}%~:%f'\$vcs_info_msg_0_'%# '
   zstyle ':vcs_info:git:*' formats '%F{190} (%b)%f'
 fi
 
@@ -46,3 +52,6 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 . ~/.aliases
+
+# To automatically activate an enviornment when changing into a directory
+eval "$(direnv hook zsh)"
