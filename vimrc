@@ -81,7 +81,13 @@ let g:coc_global_extensions = [
   \ 'coc-solargraph',
   \ 'coc-rust-analyzer',
   \ 'coc-pyright',
+  \ 'coc-go',
   \ ]
+
+" Stop vim-go from grabbing K/gd-style mappings
+let g:go_doc_keywordprg_enabled = 0
+let g:go_def_mapping_enabled = 0
+
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -91,6 +97,6 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#insert() : "\<CR>"
 inoremap <expr> <tab> coc#pum#visible() ? coc#_select_confirm() : "\<TAB>"
 
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()

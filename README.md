@@ -26,6 +26,28 @@ $(brew --prefix)/opt/fzf/install
 
 Go ahead and have it update the shell configurations when asked.
 
+## Neovim
+
+Install neovim via Homebrew:
+
+```
+brew install neovim
+```
+
+The config lives at `config/nvim/init.lua` in this repo, which rcm symlinks to
+`~/.config/nvim/init.lua`. It self-bootstraps [lazy.nvim](https://github.com/folke/lazy.nvim)
+on first launch — just open `nvim` and lazy will install itself and all plugins automatically.
+
+After plugins install, run `:Lazy sync` to get the latest versions and generate a fresh
+`lazy-lock.json` (not tracked here — it's machine-specific).
+
+Language servers are managed via [Mason](https://github.com/williamboman/mason.nvim) and
+install automatically. Copilot requires a one-time auth step:
+
+```
+:Copilot setup
+```
+
 ## VirtualBox Guest Additions
 
 To get guest editions to run warning free on Ubuntu, install this package:
